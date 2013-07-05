@@ -12,11 +12,11 @@
 		<div class="tile"><a href="/evaluation/" target="_blank"><img src="/wp-content/uploads/2013/03/tile_6.png"></a></div>
 		<hr>
 	</section>
-	<section>
+	<section class="headlines">
 		<div class="widget column-3-1 news">
-			<h2>资讯</h2>
+			<h2>动态</h2>
 			<ul>
-				<?query_posts('tag=资讯')?>
+				<?query_posts('category_name=新闻动态&posts_per_page=5')?>
 				<?while(have_posts()):the_post();?>
 				<li><a href="<?the_permalink()?>" target="_blank"><?the_title()?></a></li>
 				<?endwhile;?>
@@ -24,9 +24,9 @@
 			<button class="read-more"><a href="/tag/资讯/" target="_blank">Read more</a></button>
 		</div>
 		<div class="widget column-3-1 discount">
-			<h2>优惠活动</h2>
+			<h2>EB5项目</h2>
 			<ul>
-				<?query_posts('tag=优惠活动')?>
+				<?query_posts('category_name=移民项目&posts_per_page=5')?>
 				<?while(have_posts()):the_post();?>
 				<li><a href="<?the_permalink()?>" target="_blank"><?the_title()?></a></li>
 				<?endwhile;?>
@@ -34,32 +34,14 @@
 			<button class="read-more"><a href="/tag/优惠活动/" target="_blank">Read more</a></button>
 		</div>
 		<div class="widget column-3-1 project">
-			<h2>特色项目</h2>
+			<h2>投资案例</h2>
 			<ul>
-				<?query_posts('tag=特色项目')?>
+				<?query_posts('category_name=项目和案例&posts_per_page=5')?>
 				<?while(have_posts()):the_post();?>
 				<li><a href="<?the_permalink()?>" target="_blank"><?the_title()?></a></li>
 				<?endwhile;?>
 			</ul>
 			<button class="read-more"><a href="/tag/特色项目/" target="_blank">Read more</a></button>
-		</div>
-		<hr>
-	</section>
-	<section>
-		<div class="widget column-1 partner">
-			<h2><a href="/us/college/">合作伙伴</a></h2>
-			<ul class="column-2-1">
-				<?query_posts('category_name=us/college&posts_per_page=5')?>
-				<?while(have_posts()):the_post();?>
-				<li><a href="<?the_permalink()?>" target="_blank"><?the_title()?></a></li>
-				<?endwhile;?>
-			</ul>
-			<ul class="column-2-1">
-				<?query_posts('category_name=us/college&posts_per_page=5&paged=2')?>
-				<?while(have_posts()):the_post();?>
-				<li><a href="<?the_permalink()?>" target="_blank"><?the_title()?></a></li>
-				<?endwhile;?>
-			</ul>
 		</div>
 		<hr>
 	</section>

@@ -24,7 +24,7 @@ a:hover{
 
 body{
 	background-color: #242e2e;
-	background-image: url('/wp-content/uploads/2013/03/body_bg.png');
+	background-image: url('/wp-content/uploads/body_bg.png');
 	font-family:'Microsoft Yahei';
 }
 
@@ -41,8 +41,7 @@ section hr{
 }
 
 header, .extend-header{
-	background-color: #00b1a8;
-	background-image: url('/wp-content/uploads/2013/03/head_bg.png');
+	background-image: url('/wp-content/uploads/head_bg.png');
 }
 
 header{
@@ -52,7 +51,6 @@ header{
 
 .title{
 	width:239px;
-	border-left:rgb(0,158,151) 1px solid;
 	margin-right:30px;
 }
 
@@ -102,6 +100,11 @@ nav ul.primary :first-child,nav ul.sub :first-child{
 	margin-left:0;
 }
 
+section.headlines ul{
+	height: 180px;
+	overflow: hidden;
+}
+
 article{
 	text-align: left;
 }
@@ -121,7 +124,7 @@ article{
 }
 
 .widget.column-3-1{
-	float:left;
+	vertical-align: top;
 	width:300px;
 }
 
@@ -145,6 +148,11 @@ article{
 	width:151px;
 }
 
+.widget .column-4-1{
+	float: left;
+	width:220px;
+}
+
 .widget h2{
 	margin:0;
 	padding-left:50px;
@@ -159,23 +167,23 @@ article{
 }
 
 .widget.news h2{
-	background-image:url('/wp-content/uploads/2013/03/widget_title_news.png');
+	background-image:url('/wp-content/uploads/widget_title_news.png');
 }
 
 .widget.service h2{
-	background-image:url('/wp-content/uploads/2013/03/widget_title_service.png');
+	background-image:url('/wp-content/uploads/widget_title_service.png');
 }
 
 .widget.discount h2{
-	background-image:url('/wp-content/uploads/2013/03/widget_title_discount.png');
+	background-image:url('/wp-content/uploads/widget_title_discount.png');
 }
 
 .widget.project h2{
-	background-image:url('/wp-content/uploads/2013/03/widget_title_project.png');
+	background-image:url('/wp-content/uploads/widget_title_project.png');
 }
 
 .widget.partner h2{
-	background-image:url('/wp-content/uploads/2013/03/widget_title_partner.png');
+	background-image:url('/wp-content/uploads/widget_title_partner.png');
 }
 
 .widget ul{
@@ -183,7 +191,7 @@ article{
 }
 
 .widget ul li{
-	list-style: none;
+	list-style-position: inside;
 	line-height: 1.5;
 	font-size:13px;
 	text-indent: 1em;
@@ -199,7 +207,7 @@ article{
 	width:107px;height:28px;
 	border:none;
 	background-color: transparent;
-	background-image: url('/wp-content/uploads/2013/03/view_more_bg.png');
+	background-image: url('/wp-content/uploads/view_more_bg.png');
 	color:white;
 }
 

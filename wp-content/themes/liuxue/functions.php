@@ -3,6 +3,15 @@
 register_nav_menu('primary', '主导航');
 register_nav_menu('foot', '底部导航');
 
+add_image_size( 'home-focus', 292, 183, true );
+add_image_size( 'aside', 253, 74, true );
+
+add_theme_support('post-thumbnails');
+
+add_filter( 'excerpt_length', function(){
+	return 300;
+}, 20 );
+
 class Custom_Walker_Nav_Sub_Menu extends Walker_Nav_Menu {
 
 	var $found_parents = array();
@@ -75,11 +84,5 @@ class Custom_Walker_Nav_Sub_Menu extends Walker_Nav_Menu {
 	}
 
 }
-
-function custom_excerpt_length( $length ) {
-	return 300;
-}
-
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 ?>
