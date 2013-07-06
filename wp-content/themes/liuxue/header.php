@@ -21,7 +21,7 @@
 	<header class="shadow">
 		<section>
 			<h1 class="title">
-				<a href="<?bloginfo('siteurl')?>"><img src="/wp-content/uploads/logo.png" alt="星瀚国际中心" /></a>
+				<a href="<?bloginfo('url')?>"><img src="/wp-content/uploads/logo.png" alt="星瀚国际中心" /></a>
 			</h1>
 			<nav>
 				<?wp_nav_menu(array('menu'=>'主导航','menu_class'=>'primary','depth'=>1,'container'=>false))?>

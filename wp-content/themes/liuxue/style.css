@@ -21,6 +21,12 @@ a:hover{
 .shadow{
 	box-shadow:3px 2px 5px black;
 }
+.ellipsis{
+	word-wrap:normal;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+}
 
 body{
 	background-color: #242e2e;
@@ -74,7 +80,10 @@ nav ul.primary li{
 	padding:10px 0;
 }
 
-nav ul.primary li.current-menu-item, nav ul.primary li.current-post-ancestor{
+nav ul.primary li.current-menu-item, 
+nav ul.primary li.current-post-ancestor,
+nav ul.primary li.current-menu-ancestor,
+nav ul.primary li.current-menu-parent{
 	border-bottom: 1px white solid;
 }
 
@@ -88,12 +97,22 @@ nav ul.primary li.current-menu-ancestor .sub-menu{
 
 nav ul.sub{
 	margin-left:20px;
-	padding:13px 35px;
-	background-color: rgb(0,160,151);
+	background-color: rgb(110,0,0);
 }
 
-nav ul.sub li{
-	margin-left:40px;
+nav ul.sub-menu{
+	padding: 0 15px;
+}
+
+nav ul.sub-menu li{
+	margin-left:30px;
+	padding: 10px 0;
+}
+
+nav ul.sub li.current-menu-item,
+nav ul.sub li.current-menu-parent,
+nav ul.sub li.current-post-parent{
+	border-bottom: 1px #CCC solid;
 }
 
 nav ul.primary :first-child,nav ul.sub :first-child{
@@ -101,7 +120,7 @@ nav ul.primary :first-child,nav ul.sub :first-child{
 }
 
 section.headlines ul{
-	height: 180px;
+	height: 14em;
 	overflow: hidden;
 }
 
@@ -192,7 +211,7 @@ article{
 
 .widget ul li{
 	list-style-position: inside;
-	line-height: 1.5;
+	margin-bottom: 0.3em;
 	font-size:13px;
 	text-indent: 1em;
 	color:#AAA;
