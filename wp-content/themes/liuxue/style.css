@@ -135,6 +135,12 @@ article{
 	margin:10px 5px;
 }
 
+.tile p{
+	position: absolute;
+	margin: 150px 0 0 210px;
+	color: white;
+}
+
 .widget{
 	color:white;
 	display:inline-block;

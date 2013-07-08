@@ -1,15 +1,15 @@
 <?get_header()?>
 	<div class="extend-header shadow">
 		<section class="tiles">
-			<div class="tile"><a href="#" target="_blank"><img src="/wp-content/uploads/tile_1.jpg"></a></div>
-			<div class="tile"><a href="#" target="_blank"><img src="/wp-content/uploads/tile_2.jpg"></a></div>
-			<div class="tile"><a href="#" target="_blank"><img src="/wp-content/uploads/tile_3.jpg"></a></div>
+			<div class="tile"><p>境外投资</p><a href="/category/%e5%a2%83%e5%a4%96%e6%8a%95%e8%b5%84/" target="_blank"><img src="/wp-content/uploads/tile_1.jpg"></a></div>
+			<div class="tile"><p>EB5移民</p><a href="/category/eb5%e7%a7%bb%e6%b0%91/" target="_blank"><img src="/wp-content/uploads/tile_2.jpg"></a></div>
+			<div class="tile"><p>L1移民</p><a href="/category/l1%e7%a7%bb%e6%b0%91/" target="_blank"><img src="/wp-content/uploads/tile_3.jpg"></a></div>
 		</section>
 	</div>
 	<section class="tiles">
-		<div class="tile"><a href="#" target="_blank"><img src="/wp-content/uploads/tile_4.jpg"></a></div>
-		<div class="tile"><a href="#" target="_blank"><img src="/wp-content/uploads/tile_5.jpg"></a></div>
-		<div class="tile"><a href="#" target="_blank"><img src="/wp-content/uploads/tile_6.jpg"></a></div>
+		<div class="tile"><p>考察项目</p><a href="/category/%e8%81%94%e7%b3%bb%e6%88%91%e4%bb%ac/%e6%b5%b7%e5%a4%96%e8%80%83%e5%af%9f/" target="_blank"><img src="/wp-content/uploads/tile_4.jpg"></a></div>
+		<div class="tile"><p>后续服务</p><a href="/%E6%98%9F%E7%80%9A%E6%8F%90%E4%BE%9B%E7%BE%8E%E5%9B%BD%E7%A7%BB%E6%B0%91%E5%90%8E%E7%BB%AD%E6%9C%8D%E5%8A%A1/" target="_blank"><img src="/wp-content/uploads/tile_5.jpg"></a></div>
+		<div class="tile"><p>海外房产</p><a href="/category/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC/%E5%85%B6%E5%AE%83%E7%BE%8E%E5%9B%BD%E4%BA%8B%E5%8A%A1/" target="_blank"><img src="/wp-content/uploads/tile_6.jpg"></a></div>
 		<hr>
 	</section>
 	<section class="headlines">
