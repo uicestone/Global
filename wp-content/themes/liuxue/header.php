@@ -27,5 +27,9 @@
 				<?wp_nav_menu(array('menu'=>'主导航','menu_class'=>'primary','depth'=>1,'container'=>false))?>
 				<?!is_front_page() && wp_nav_menu(array('menu'=>'主导航','walker'=> new Custom_Walker_Nav_Sub_Menu(),'container'=>false,'menu_class'=>'sub'));?>
 			</nav>
+			<form method="get" id="searchform" action="/" style="float:right;">
+				<input type="text" class="field" name="s" id="s" placeholder="搜索">
+				<button type="submit">搜索</button>
+			</form>
 		</section>
 	</header>
