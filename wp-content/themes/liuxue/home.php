@@ -8,7 +8,7 @@
 	</div>
 	<section class="tiles">
 		<div class="tile"><p>考察项目</p><a href="/category/%e8%81%94%e7%b3%bb%e6%88%91%e4%bb%ac/%e6%b5%b7%e5%a4%96%e8%80%83%e5%af%9f/" target="_blank"><img src="/wp-content/uploads/tile_4.jpg"></a></div>
-		<div class="tile"><p>后续服务</p><a href="/%E6%98%9F%E7%80%9A%E6%8F%90%E4%BE%9B%E7%BE%8E%E5%9B%BD%E7%A7%BB%E6%B0%91%E5%90%8E%E7%BB%AD%E6%9C%8D%E5%8A%A1/" target="_blank"><img src="/wp-content/uploads/tile_5.jpg"></a></div>
+		<div class="tile"><p>后续服务</p><a href="/%E3%80%90%E6%98%9F%E7%80%9A%E6%98%8E%E6%98%9F%E4%BA%A7%E5%93%81%E3%80%91%E6%B5%B7%E5%A4%96%E5%90%8E%E7%BB%AD%E6%9C%8D%E5%8A%A1/" target="_blank"><img src="/wp-content/uploads/tile_5.jpg"></a></div>
 		<div class="tile"><p>海外房产</p><a href="/category/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC/%E5%85%B6%E5%AE%83%E7%BE%8E%E5%9B%BD%E4%BA%8B%E5%8A%A1/" target="_blank"><img src="/wp-content/uploads/tile_6.jpg"></a></div>
 		<hr>
 	</section>
