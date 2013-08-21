@@ -18,10 +18,10 @@
 define('DB_NAME', 'global');
 
 /** MySQL 数据库用户名 */
-define('DB_USER', 'root');
+define('DB_USER', 'global');
 
 /** MySQL 数据库密码 */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', '5RfzvJq5ZNrxubJp');
 
 /** MySQL 主机 */
 define('DB_HOST', '127.0.0.1');
