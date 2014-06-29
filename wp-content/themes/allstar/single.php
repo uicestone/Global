@@ -1,9 +1,9 @@
-<?php get_header(); ?>
+<?php get_header(); the_post(); ?>
 <div class="content_block">
 	<!-- top_title -->
 	<div class="top_title">
 		<div class="wraper">
-			<h2>Our Blog <span>Keep up with the latest news, tips and features right here!</span></h2>
+			<h2><?php the_title(); ?> <span></span></h2>
 			<ul>
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Blog</a></li>
@@ -18,31 +18,16 @@
 
 			<div class="post post_full">
 				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
+					<div class="date"><?php the_date(); ?></div>
 					<img src="<?=get_template_directory_uri()?>/images/blog/blog_01.png" width="640" height="265" alt="" />
 				</div>
 				<div class="desc">
-					<h4>Being Creative Take a  Lot of Hard Work</h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris condime ntum nibh, ut fermentum mas justo sitters amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, cum soluta nobis est eligen di optio cumque nihil impedit quo minus id quodsir maxime placeat facere possimus, omnis voluas assumenda est, omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente deleiores. </p>
-					<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-					<blockquote>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</blockquote>
-					<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla.</p>
-					<ul>
-						<li>Pellentesque eu sem lorem, at adipiscing tortor.</li>
-						<li>Duis fringilla urna eu ligula accumsan venenatis.</li>
-						<li>Nulla id ligula vel elit hendrerit pellentesque ac id magna.</li>
-						<li>Duis sollicitudin felis id nisl adipiscing aliquet.</li>
-					</ul>
-					<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem suscipit laboriosam, nisi ut aliquid execptorent sadip ipsum dolors omnies nemis amet ubtra uns.</p>
-					<div class="metadata">
-						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">Photoshop, Photography, Business, Corporate, Creative</a>  |  <a href="#">12 COMMENTS</a>
-					</div>
+					<?php the_content(); ?>
 				</div>
 			</div>
 
 			<!-- /share story -->
-			<div class="share_story">
+<!--			<div class="share_story">
 				<h4>Share This Story!</h4>
 				<ul>
 					<li><a class="facebook" href="#">facebook</a></li>
@@ -53,11 +38,11 @@
 					<li><a class="google" href="#">google</a></li>
 					<li><a class="www" href="#">www</a></li>
 				</ul>
-			</div>
+			</div>-->
 			<!-- /share story -->
 
 			<!-- /Comments -->
-			<div class="comments">
+<!--			<div class="comments">
 				<h4>Comments</h4>
 				<div class="add_comment c_after"><a class="btn_m" href="#">Add Comment</a></div>
 				<ul>
@@ -80,7 +65,7 @@
 						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut etras omns unytreas  volupNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia nontres  numquam eius mo  pora incidunt ut labore et dolore magnam aliquam quaerat voluptatems uns.</p>
 					</li>
 				</ul>
-			</div>
+			</div>-->
 			<!-- /Comments -->
 
 			<!-- /Leave a Comment -->

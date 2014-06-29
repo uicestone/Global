@@ -11,135 +11,50 @@ get_header();
 	<!-- top_title -->
 	<div class="top_title">
 		<div class="wraper">
-			<h2>Our Blog <span>Keep up with the latest news, tips and features right here!</span></h2>
-			<ul>
+			<h2><?php single_cat_title(); ?><span><?php echo category_description(get_the_category()[0]->ID); ?></span></h2>
+<!--			<ul>
 				<li><a href="#">Home</a></li>
-				<li><a href="#">Blog</a></li>
 				<li>Large Image No Sidebar</li>
-			</ul>
+			</ul>-->
 		</div>
 	</div>
 	<!-- /top_title -->
 	<div class="wraper">
 		<!-- blog entries full -->
 		<div class="blog_entries blog_entries_full">
-
+			
+			<?php while(have_posts()): the_post(); ?>
 			<div class="post post_medium">
 				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
-					<a href="blog_post.html"><img src="<?= get_template_directory_uri() ?>/images/blog/blog_09.png" width="493" height="249" alt="" /></a>
+					<div class="date"><?php the_date(); ?></div>
+					<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('post-thumbnail'); ?></a>
 				</div>
 				<div class="desc">
-					<h4><a href="blog_post.html">Being Creative Take a  Lot of Hard Work</a></h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris uns condime ntum nibh, ut fermentum mas justo sitters sit amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, impedit quo minus id quodsir maxime placeat , omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav ...</p>
+					<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+					<p><?php the_excerpt(); ?></p>
 					<div class="metadata">
 						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">12 COMMENTS</a><br /><a href="#">Photoshop, Photography, Business, Corporate, Creative</a>
-						<a href="blog_post.html" class="read_more btn_col">Read More</a>
+						By <a href="#"><?php the_author(); ?></a>
+						<!--<a href="#">12 COMMENTS</a>-->
+						<br />
+						<?php the_tags(); ?>
+						<a href="<?php the_permalink(); ?>" class="read_more btn_col">Read More</a>
 					</div>   
 				</div>   
 			</div>
-
-			<div class="post post_medium">
-				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
-					<a href="blog_post.html"><img src="<?= get_template_directory_uri() ?>/images/blog/blog_10.png" width="493" height="249" alt="" /></a>
-				</div>
-				<div class="desc">
-					<h4><a href="blog_post.html">Being Creative Take a  Lot of Hard Work</a></h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris uns condime ntum nibh, ut fermentum mas justo sitters sit amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, impedit quo minus id quodsir maxime placeat , omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav ...</p>
-					<div class="metadata">
-						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">12 COMMENTS</a><br /><a href="#">Photoshop, Photography, Business, Corporate, Creative</a>
-						<a href="blog_post.html" class="read_more btn_col">Read More</a>
-					</div>   
-				</div>   
-			</div>
-
-			<div class="post post_medium">
-				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
-					<a href="blog_post.html"><img src="<?= get_template_directory_uri() ?>/images/blog/blog_11.png" width="493" height="249" alt="" /></a>
-				</div>
-				<div class="desc">
-					<h4><a href="blog_post.html">Being Creative Take a  Lot of Hard Work</a></h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris uns condime ntum nibh, ut fermentum mas justo sitters sit amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, impedit quo minus id quodsir maxime placeat , omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav ...</p>
-					<div class="metadata">
-						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">12 COMMENTS</a><br /><a href="#">Photoshop, Photography, Business, Corporate, Creative</a>
-						<a href="blog_post.html" class="read_more btn_col">Read More</a>
-					</div>   
-				</div>   
-			</div>
-
-			<div class="post post_medium">
-				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
-					<a href="blog_post.html"><img src="<?= get_template_directory_uri() ?>/images/blog/blog_12.png" width="493" height="249" alt="" /></a>
-				</div>
-				<div class="desc">
-					<h4><a href="blog_post.html">Being Creative Take a  Lot of Hard Work</a></h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris uns condime ntum nibh, ut fermentum mas justo sitters sit amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, impedit quo minus id quodsir maxime placeat , omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav ...</p>
-					<div class="metadata">
-						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">12 COMMENTS</a><br /><a href="#">Photoshop, Photography, Business, Corporate, Creative</a>
-						<a href="blog_post.html" class="read_more btn_col">Read More</a>
-					</div>   
-				</div>   
-			</div>
-
-			<div class="post post_medium">
-				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
-					<a href="blog_post.html"><img src="<?= get_template_directory_uri() ?>/images/blog/blog_13.png" width="493" height="249" alt="" /></a>
-				</div>
-				<div class="desc">
-					<h4><a href="blog_post.html">Being Creative Take a  Lot of Hard Work</a></h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris uns condime ntum nibh, ut fermentum mas justo sitters sit amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, impedit quo minus id quodsir maxime placeat , omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav ...</p>
-					<div class="metadata">
-						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">12 COMMENTS</a><br /><a href="#">Photoshop, Photography, Business, Corporate, Creative</a>
-						<a href="blog_post.html" class="read_more btn_col">Read More</a>
-					</div>   
-				</div>   
-			</div>
-
-			<div class="post post_medium">
-				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
-					<a href="blog_post.html"><img src="<?= get_template_directory_uri() ?>/images/blog/blog_14.png" width="493" height="249" alt="" /></a>
-				</div>
-				<div class="desc">
-					<h4><a href="blog_post.html">Being Creative Take a  Lot of Hard Work</a></h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris uns condime ntum nibh, ut fermentum mas justo sitters sit amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, impedit quo minus id quodsir maxime placeat , omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav ...</p>
-					<div class="metadata">
-						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">12 COMMENTS</a><br /><a href="#">Photoshop, Photography, Business, Corporate, Creative</a>
-						<a href="blog_post.html" class="read_more btn_col">Read More</a>
-					</div>   
-				</div>   
-			</div>
-
-			<div class="post post_medium">
-				<div class="img_wrap bwWrapper">
-					<div class="date">April 2, 2012</div>
-					<a href="blog_post.html"><img src="<?= get_template_directory_uri() ?>/images/blog/blog_15.png" width="493" height="249" alt="" /></a>
-				</div>
-				<div class="desc">
-					<h4><a href="blog_post.html">Being Creative Take a  Lot of Hard Work</a></h4>
-					<p>Fugiat dapibus, tellus ac cursus commodo, mauesris uns condime ntum nibh, ut fermentum mas justo sitters sit amet risus. Cras mattis cosi sectetut amet fermens tum aecenas faucib sadips amets. Libero tempore, impedit quo minus id quodsir maxime placeat , omnis dolor repellendus sadips ipsums fugiats vitae voluptas dolores amets untras ochoc neuav ...</p>
-					<div class="metadata">
-						<strong class="dots">....</strong>
-						By <a href="#">Crucio</a>  |  <a href="#">12 COMMENTS</a><br /><a href="#">Photoshop, Photography, Business, Corporate, Creative</a>
-						<a href="blog_post.html" class="read_more btn_col">Read More</a>
-					</div>   
-				</div>   
-			</div>
-
+			<?php endwhile; ?>
+			
 			<!-- pager_nav -->
 			<div class="pager_nav">
-				<a href="#">1</a><span>2</span><a href="#">3</a><a href="#">4</a><a href="#">5</a>
-				<a href="#" class="bx-prev">prev</a><a href="#" class="bx-next">next</a>
+				<?php
+				echo paginate_links(array(
+					'base' => str_replace( 99999, '%#%', esc_url( get_pagenum_link( 99999 ) ) ),
+					'format'=>'/%n%/page/%#%',
+					'total'=>2,
+					'current' => max( 1, get_query_var('paged') ),
+					'total' => $wp_query->max_num_pages)
+				);
+				?>
 			</div>
 			<!-- /pager_nav -->
 		</div>

@@ -3,6 +3,11 @@
  * Theme specific scripts for Allstar
  */
 add_action('init', function(){
+	
+	register_nav_menu('primary', '主导航');
+	
+	add_image_size('post-thumbnail', 493, 249, true);
+	
 	wp_register_style('style', get_template_directory_uri() . '/stylesheets/style.css');
 	wp_register_style('responsive', get_template_directory_uri() . '/stylesheets/responsive.css');
 	wp_register_style('jquery.onebyone', get_template_directory_uri() . '/stylesheets/jquery.onebyone.css');
