@@ -7,7 +7,7 @@ function icl_sitepress_activate(){
     
     global $wpdb;
     global $EZSQL_ERROR;
-    require_once(ICL_PLUGIN_PATH . '/inc/lang-data.inc');
+    require_once(ICL_PLUGIN_PATH . '/inc/lang-data.php');
     //defines $langs_names
 
     $charset_collate = '';
@@ -21,8 +21,8 @@ function icl_sitepress_activate(){
     try{
     
         // languages table
-        $table_name = $wpdb->prefix.'icl_languages';            
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        $table_name = $wpdb->prefix.'icl_languages';                            
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = " 
             CREATE TABLE `{$table_name}` (
                 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -31,24 +31,35 @@ function icl_sitepress_activate(){
                 `major` TINYINT NOT NULL DEFAULT '0', 
                 `active` TINYINT NOT NULL ,
                 `default_locale` VARCHAR( 8 ),
+                `tag` VARCHAR( 8 ),
+                `encode_url` TINYINT( 1 ) NOT NULL DEFAULT 0,
                 UNIQUE KEY `code` (`code`),
                 UNIQUE KEY `english_name` (`english_name`)
-            ) ENGINE=MyISAM {$charset_collate}"; 
+            ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
             
-            //$langs_names is defined in ICL_PLUGIN_PATH . '/inc/lang-data.inc'
+            //$langs_names is defined in ICL_PLUGIN_PATH . '/inc/lang-data.php'
             foreach($langs_names as $key=>$val){
                 if(strpos($key,'Norwegian Bokm')===0){ $key = 'Norwegian Bokmål'; $lang_codes[$key] = 'nb';} // exception for norwegian
                 $default_locale = isset($lang_locales[$lang_codes[$key]]) ? $lang_locales[$lang_codes[$key]] : '';
-                @$wpdb->insert($wpdb->prefix . 'icl_languages', array('english_name'=>$key, 'code'=>$lang_codes[$key], 'major'=>$val['major'], 'active'=>0, 'default_locale'=>$default_locale));
+                $wpdb->insert($wpdb->prefix . 'icl_languages', 
+                    array(
+                        'english_name'  => $key, 
+                        'code'          => $lang_codes[$key], 
+                        'major'         => $val['major'], 
+                        'active'        => 0, 
+                        'default_locale'=> $default_locale,
+                        'tag'           => str_replace ('_', '-', $default_locale)
+                    )
+                );
             }        
         }
 
         // languages translations table
         $add_languages_translations = false;
         $table_name = $wpdb->prefix.'icl_languages_translations';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
             CREATE TABLE `{$table_name}` (
                 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -56,7 +67,7 @@ function icl_sitepress_activate(){
                 `display_language_code` VARCHAR( 7 ) NOT NULL ,            
                 `name` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL,
                 UNIQUE(`language_code`, `display_language_code`)            
-            ) ENGINE=MyISAM {$charset_collate}"; 
+            ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
             $add_languages_translations = true;
@@ -88,25 +99,27 @@ function icl_sitepress_activate(){
 
         // translations
         $table_name = $wpdb->prefix.'icl_translations';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
             CREATE TABLE `{$table_name}` (
                 `translation_id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-                `element_type` VARCHAR( 32 ) NOT NULL DEFAULT 'post_post',
+                `element_type` VARCHAR( 36 ) NOT NULL DEFAULT 'post_post',
                 `element_id` BIGINT NULL DEFAULT NULL ,
                 `trid` BIGINT NOT NULL ,
                 `language_code` VARCHAR( 7 ) NOT NULL,
                 `source_language_code` VARCHAR( 7 ),
                 UNIQUE KEY `el_type_id` (`element_type`,`element_id`),
-                UNIQUE KEY `trid_lang` (`trid`,`language_code`)
-            ) ENGINE=MyISAM {$charset_collate}"; 
+                UNIQUE KEY `trid_lang` (`trid`,`language_code`),
+                KEY `trid` (`trid`)
+                
+            ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
         } 
 
         // translation_status table
         $table_name = $wpdb->prefix.'icl_translation_status';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                 CREATE TABLE `{$table_name}` (
                  `rid` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -122,7 +135,7 @@ function icl_sitepress_activate(){
                  `_prevstate` longtext,
                  PRIMARY KEY (`rid`),
                  UNIQUE KEY `translation_id` (`translation_id`)
-                ) ENGINE=MyISAM {$charset_collate}    
+                ) {$charset_collate}    
             ";
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
@@ -130,7 +143,7 @@ function icl_sitepress_activate(){
         
         // translation jobs
         $table_name = $wpdb->prefix.'icl_translate_job';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                 CREATE TABLE `{$table_name}` (
                 `job_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -140,7 +153,7 @@ function icl_sitepress_activate(){
                 `manager_id` INT UNSIGNED NOT NULL ,
                 `revision` INT UNSIGNED NULL,
                 INDEX ( `rid` , `translator_id` )
-                ) ENGINE = MYISAM ;    
+                ) {$charset_collate}    
             ";
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
@@ -148,7 +161,7 @@ function icl_sitepress_activate(){
         
         // translate table
         $table_name = $wpdb->prefix.'icl_translate';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
                 $sql = "
                 CREATE TABLE `{$table_name}` (
                 `tid` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -162,7 +175,7 @@ function icl_sitepress_activate(){
                 `field_data_translated` TEXT NOT NULL ,
                 `field_finished` TINYINT NOT NULL DEFAULT 0,
                 INDEX ( `job_id` )
-                ) ENGINE = MYISAM ;
+                ) {$charset_collate}
             ";
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
@@ -170,20 +183,20 @@ function icl_sitepress_activate(){
             
         // languages locale file names
         $table_name = $wpdb->prefix.'icl_locale_map';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                 CREATE TABLE `{$table_name}` (
-                    `code` VARCHAR( 8 ) NOT NULL ,
+                    `code` VARCHAR( 7 ) NOT NULL ,
                     `locale` VARCHAR( 8 ) NOT NULL ,
                     UNIQUE (`code` ,`locale`)
-                ) ENGINE=MyISAM {$charset_collate}"; 
+                ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
         } 
         
         // flags table    
        $table_name = $wpdb->prefix.'icl_flags';
-       if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+       if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                 CREATE TABLE `{$table_name}` (
                 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -191,7 +204,7 @@ function icl_sitepress_activate(){
                 `flag` VARCHAR( 32 ) NOT NULL ,
                 `from_template` TINYINT NOT NULL DEFAULT '0',
                 UNIQUE (`lang_code`)
-                ) ENGINE=MyISAM {$charset_collate}"; 
+                ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
             $codes = $wpdb->get_col("SELECT code FROM {$wpdb->prefix}icl_languages");
@@ -208,24 +221,24 @@ function icl_sitepress_activate(){
            
        /* general string translation */
         $table_name = $wpdb->prefix.'icl_strings';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                 CREATE TABLE `{$table_name}` (
                   `id` bigint(20) unsigned NOT NULL auto_increment,
-                  `language` varchar(10) NOT NULL,
+                  `language` varchar(7) NOT NULL,
                   `context` varchar(160) NOT NULL,
                   `name` varchar(160) NOT NULL,
                   `value` text NOT NULL,
                   `status` TINYINT NOT NULL,
                   PRIMARY KEY  (`id`),
                   UNIQUE KEY `context_name` (`context`,`name`)
-                ) ENGINE=MyISAM {$charset_collate}"; 
+                ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
         }
         
         $table_name = $wpdb->prefix.'icl_string_translations';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                 CREATE TABLE `{$table_name}` (
                   `id` bigint(20) unsigned NOT NULL auto_increment,
@@ -237,13 +250,13 @@ function icl_sitepress_activate(){
                   `translation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                   PRIMARY KEY  (`id`),
                   UNIQUE KEY `string_language` (`string_id`,`language`)
-                ) ENGINE=MyISAM {$charset_collate}"; 
+                ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
         }
         
         $table_name = $wpdb->prefix.'icl_string_status';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                  CREATE TABLE `{$table_name}` (
                 `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -252,13 +265,13 @@ function icl_sitepress_activate(){
                 `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
                 `md5` VARCHAR( 32 ) NOT NULL,
                 INDEX ( `string_translation_id` )
-                ) ENGINE=MyISAM {$charset_collate}"; 
+                ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
         }
 
         $table_name = $wpdb->prefix.'icl_string_positions';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                  CREATE TABLE `{$table_name}` (
                 `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -266,14 +279,14 @@ function icl_sitepress_activate(){
                 `kind` TINYINT,
                 `position_in_page` VARCHAR( 255 ) NOT NULL,
                 INDEX ( `string_id` )
-                ) ENGINE=MyISAM {$charset_collate}"; 
+                ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
         }    
            
         // message status table
         $table_name = $wpdb->prefix.'icl_message_status';
-        if($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") != $table_name){
+        if(0 !== strcasecmp($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"), $table_name)){
             $sql = "
                  CREATE TABLE `{$table_name}` (
                       `id` bigint(20) unsigned NOT NULL auto_increment,
@@ -288,7 +301,7 @@ function icl_sitepress_activate(){
                       PRIMARY KEY  (`id`),
                       UNIQUE KEY `rid` (`rid`),
                       KEY `object_id` (`object_id`)
-                ) ENGINE=MyISAM {$charset_collate}"; 
+                ) {$charset_collate}"; 
             $wpdb->query($sql);
             if($e = mysql_error()) throw new Exception($e);
         }
@@ -304,7 +317,7 @@ function icl_sitepress_activate(){
             `status` SMALLINT NOT NULL,
             PRIMARY KEY ( `id` ) ,
             INDEX ( `rid` )
-            ) ENGINE=MyISAM {$charset_collate}
+            ) {$charset_collate}
       ";
       $wpdb->query($icl_translation_sql);
       if($e = mysql_error()) throw new Exception($e);
@@ -317,9 +330,8 @@ function icl_sitepress_activate(){
             `md5` VARCHAR( 32 ) NOT NULL ,
             PRIMARY KEY ( `rid` ) ,
             INDEX ( `nid` )
-            ) ENGINE=MyISAM {$charset_collate} 
+            ) {$charset_collate} 
       ";  
-       mysql_query($icl_translation_sql);
       $wpdb->query($icl_translation_sql);
       if($e = mysql_error()) throw new Exception($e);
        
@@ -330,7 +342,7 @@ function icl_sitepress_activate(){
             `md5` VARCHAR( 32 ) NOT NULL ,
             `links_fixed` TINYINT NOT NULL DEFAULT 0,
             PRIMARY KEY ( `nid` )
-            ) ENGINE=MyISAM {$charset_collate}  
+            ) {$charset_collate}  
       ";  
       $wpdb->query($icl_translation_sql);
       if($e = mysql_error()) throw new Exception($e);
@@ -343,7 +355,7 @@ function icl_sitepress_activate(){
             `can_delete` TINYINT NOT NULL ,
             `show` TINYINT NOT NULL ,
             PRIMARY KEY ( `id` )
-            ) ENGINE=MyISAM {$charset_collate}  
+            ) {$charset_collate}  
       ";  
       $wpdb->query($icl_translation_sql);
       if($e = mysql_error()) throw new Exception($e);

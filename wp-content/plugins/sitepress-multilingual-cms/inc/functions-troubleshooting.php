@@ -188,6 +188,8 @@ function icl_reset_wpml($blog_id = false){
     if(empty($blog_id)){
         $blog_id = isset($_POST['id']) ? $_POST['id'] : $wpdb->blogid;
     }
+    
+    define('ICL_IS_WPML_RESET', true);
       
     if($blog_id || !function_exists('is_multisite') || !is_multisite()){
 

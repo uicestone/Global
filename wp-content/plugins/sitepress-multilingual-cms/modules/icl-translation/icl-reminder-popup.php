@@ -5,8 +5,8 @@
     // NOTE: this is also used for other popup links to ICanLocalize
 
     global $wpdb;
-    	
-    $target = $_GET['target'];
+        
+    $target = $_GET['target'];    
     $auto_resize = isset($_GET['auto_resize']) && $_GET['auto_resize'];
     $unload_cb = isset($_GET['unload_cb']) ? $_GET['unload_cb'] : false;
     if(preg_match('|^@select-translators;([^;]+);([^;]+)@|', $target, $matches)){
@@ -20,7 +20,9 @@
         
         foreach($this->get_active_languages() as $lang){
             $lang_server[$lang['code']] = ICL_Pro_Translation::server_languages_map($lang['english_name']);
-        }        
+        }    
+        
+        
         if(!$this->icl_account_configured()){
             $user['create_account'] = 1;
             $user['anon'] = 1;
@@ -76,7 +78,15 @@
         }else{
             
             $iclsettings['language_pairs'] = $this->settings['language_pairs'];
-            $iclsettings['language_pairs'][$from_lang][$to_lang] = 1;
+            $iclsettings['language_pairs'][$from_lang][$to_lang] = 1;    
+            
+            // languages pair clean up            
+            
+            foreach($iclsettings['language_pairs'][$from_lang] as $tol => $val){
+                if(empty($lang_server[$tol])){
+                    unset($iclsettings['language_pairs'][$from_lang][$tol]);
+                }
+            }
             $this->save_settings($iclsettings);
             
             // update account - add language pair
@@ -130,22 +140,30 @@
     
     $support_mode = isset($_GET['support']) ? $_GET['support'] : '';
     
+    /*
     if ($support_mode == '1') {
         $iclq = new ICanLocalizeQuery($this->settings['support_site_id'], $this->settings['support_access_key']);
     } else {
         $iclq = new ICanLocalizeQuery($this->settings['site_id'], $this->settings['access_key']);
     }
     $session_id = $iclq->get_current_session(true, $support_mode == '1');
+    */
+    if(isset($this->settings['site_id']) && isset($this->settings['access_key'])){
+        $iclq = new ICanLocalizeQuery($this->settings['site_id'], $this->settings['access_key']);
+        $session_id = $iclq->get_current_session(true, $support_mode == '1');
+    }else{
+        $session_id = '';
+    }
     
     $admin_lang = $this->get_admin_language();
     
-	
-	if (isset($_GET['code'])) {
-		$add = '&code=' . $_GET['code'];
-	}else{
+    
+    if (isset($_GET['code'])) {
+        $add = '&code=' . urlencode($_GET['code']);
+    }else{
         $add = '';
     }
-	
+    
     if (strpos($target, '?') === false) {
         $target .= '?';
     } else {
@@ -154,7 +172,7 @@
     $target .= "session=" . $session_id . "&lc=" . $admin_lang . $add;
     
 
-    $on_click = isset($_GET['message_id']) ? 'parent.dismiss_message(' . esc_js($_GET['message_id']) . ');' : '';
+    $on_click = isset($_GET['message_id']) ? 'parent.dismiss_message(' . esc_js($_GET['message_id']) . ', \'' . wp_create_nonce('icl_delete_message_nonce') . '\');' : '';
     
     $can_delete = isset($_GET['message_id']) ? $wpdb->get_var($wpd->prepare("SELECT can_delete FROM {$wpdb->prefix}icl_reminders WHERE id=%d", $_GET['message_id'])) == '1' : false;
 
@@ -169,5 +187,5 @@
     <br />
     <br />
 <?php endif; ?> 
-<iframe src="<?php echo $target;?>" style="width:100%; height:92%" onload="<?php if($auto_resize):?>jQuery('#TB_window').css('width','90%').css('margin-left', '-45%');<?php endif; ?><?php if($unload_cb):?>jQuery('#TB_window').unbind('unload').bind('unload', <?php echo esc_js($unload_cb) ?>);<?php endif; ?>">
+<iframe src="<?php echo $target;?>" style="width:100%; height:92%" onload="<?php if($auto_resize):?>jQuery('#TB_window').css('width','90%').css('margin-left', '-45%');<?php endif; ?><?php if($unload_cb):?>jQuery('#TB_window').unbind('unload').bind('tb_unload', <?php echo esc_js($unload_cb) ?>);<?php endif; ?>">
 

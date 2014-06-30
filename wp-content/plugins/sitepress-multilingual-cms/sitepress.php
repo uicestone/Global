@@ -5,11 +5,11 @@ Plugin URI: http://wpml.org/
 Description: WPML Multilingual CMS. <a href="http://wpml.org">Documentation</a>.
 Author: ICanLocalize
 Author URI: http://wpml.org
-Version: 2.4.2
+Version: 2.8.2
 */
 
 if(defined('ICL_SITEPRESS_VERSION')) return;
-define('ICL_SITEPRESS_VERSION', '2.4.2');
+define('ICL_SITEPRESS_VERSION', '2.8.2');
 define('ICL_PLUGIN_PATH', dirname(__FILE__));
 define('ICL_PLUGIN_FOLDER', basename(ICL_PLUGIN_PATH));
 define('ICL_PLUGIN_URL', plugins_url() . '/' . ICL_PLUGIN_FOLDER );
@@ -19,9 +19,6 @@ if(defined('WP_ADMIN')){
     if(defined('PHP_VERSION_INCOMPATIBLE')) return;
 }
 
-if ( function_exists('is_multisite') && is_multisite() ) {
-    include_once( ABSPATH . WPINC . '/vars.php' );
-}
 require ICL_PLUGIN_PATH . '/inc/not-compatible-plugins.php';
 if(!empty($icl_ncp_plugins)){
     return;
@@ -41,9 +38,8 @@ if ( function_exists('is_multisite') && is_multisite() ) {
     }
 }
 
-require ICL_PLUGIN_PATH . '/inc/constants.inc';
+require ICL_PLUGIN_PATH . '/inc/constants.php';
 
-require ICL_PLUGIN_PATH . '/inc/pre-wp3-compatibility.php';
 require_once ICL_PLUGIN_PATH . '/inc/sitepress-schema.php';
 require ICL_PLUGIN_PATH . '/inc/template-functions.php';
 require ICL_PLUGIN_PATH . '/sitepress.class.php';
@@ -58,19 +54,27 @@ require ICL_PLUGIN_PATH . '/inc/import-xml.php';
 if(defined('WPML_UPGRADE_NOT_POSSIBLE') && WPML_UPGRADE_NOT_POSSIBLE) return;
 
 if(is_admin() || defined('XMLRPC_REQUEST')){
-    require ICL_PLUGIN_PATH . '/inc/upgrade_plugins.php';
     require ICL_PLUGIN_PATH . '/lib/icl_api.php';
     require ICL_PLUGIN_PATH . '/lib/xml2array.php';
     require ICL_PLUGIN_PATH . '/lib/Snoopy.class.php';
     require ICL_PLUGIN_PATH . '/inc/translation-management/translation-management.class.php';
     require ICL_PLUGIN_PATH . '/inc/translation-management/pro-translation.class.php';        
+    require ICL_PLUGIN_PATH . '/inc/pointers.php';        
+}elseif(preg_match('#wp-comments-post\.php$#', $_SERVER['REQUEST_URI'])){
+    require ICL_PLUGIN_PATH . '/inc/translation-management/translation-management.class.php';
+    require ICL_PLUGIN_PATH . '/inc/translation-management/pro-translation.class.php';        
 }
 
+if( 
+    !isset($_REQUEST['action']) || 
+    ($_REQUEST['action'] != 'activate' && $_REQUEST['action']!='activate-selected') || 
+    (
+        (!isset($_REQUEST['plugin']) || 
+        $_REQUEST['plugin'] != basename(ICL_PLUGIN_PATH).'/'.basename(__FILE__)
+    ) && 
+    !@in_array(ICL_PLUGIN_FOLDER . '/' . basename(__FILE__), $_REQUEST['checked']))){
 
-if( !isset($_REQUEST['action'])     || ($_REQUEST['action']!='activate' && $_REQUEST['action']!='activate-selected') 
-    || ((!isset($_REQUEST['plugin']) || $_REQUEST['plugin'] != basename(ICL_PLUGIN_PATH).'/'.basename(__FILE__)) 
-        && !@in_array(basename(ICL_PLUGIN_PATH).'/'.basename(__FILE__), $_REQUEST['checked']))){
-
+    global $sitepress;
     $sitepress = new SitePress();
     $sitepress_settings = $sitepress->get_settings();
 
@@ -79,19 +83,19 @@ if( !isset($_REQUEST['action'])     || ($_REQUEST['action']!='activate' && $_REQ
         require ICL_PLUGIN_PATH . '/inc/comments-translation/functions.php';
     }
 
-	if (is_admin() && isset($_GET['page']) && $_GET['page'] == ICL_PLUGIN_FOLDER . '/menu/support.php'){
-		require_once ICL_PLUGIN_PATH . '/inc/support.php';
-		$icl_support = new SitePress_Support();
-	}
-
     require ICL_PLUGIN_PATH . '/modules/cache-plugins-integration/cache-plugins-integration.php';
     
     require ICL_PLUGIN_PATH . '/inc/wp-login-filters.php';
     
     require_once ICL_PLUGIN_PATH . '/inc/plugins-integration.php';
-    
 
 }
+
+if(!empty($sitepress_settings['automatic_redirect'])){
+    require_once ICL_PLUGIN_PATH . '/inc/browser-redirect.php';    
+}
+
+
 
 // activation hook
 register_activation_hook( WP_PLUGIN_DIR . '/' . ICL_PLUGIN_FOLDER . '/sitepress.php', 'icl_sitepress_activate' );
