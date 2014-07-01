@@ -1,14 +1,12 @@
 	<!-- social block -->
 	<div class="social_block">
 		<div class="wraper">
-			<p>Stay connected with us in your favorite flavor!</p>
+			<p>Stay connected with us: </p>
 			<ul>
-				<li class="facebook"><a href="#">Facebook</a></li>
-				<li class="twitter"><a href="#">Twitter</a></li>
-				<li class="linkedin"><a href="#">LinkedIn</a></li>
-				<li class="rss"><a href="#">RSS</a></li>
-				<li class="dribbble"><a href="#">Dribbble</a></li>
-				<li class="google"><a href="#">Google+</a></li>
+				<li class="rss"><a href="phoneto:021-61681285">电话: 021-6168 1285</a></li>
+				<li class="rss"><a href="mailto:service@allstar-international.com">E-mail: service@allstar-international.com</a></li>
+				<li class="rss"><a href="#">新浪微博</a></li>
+				<li class="rss"><a href="#">博客</a></li>
 			</ul>
 		</div>
 	</div>
@@ -19,38 +17,36 @@
 				<!-- bottom about -->
 				<div class="bottom_about">
 					<p><img src="<?=get_template_directory_uri()?>/images/logo.png" alt="" /></p>
-					<p>At vero eos et accusaus et iusto unir un dignissimos ducimus quirds siter ters pi blranditiis praesentium amets voluptatum un deleniti atque corrupti quosdirs dolores etra quasir moltias unstw excepturi sinte amets occaecatires.</p>
+					<p></p>
 				</div>
 				<!-- /bottom about -->
 				<!-- recent tweets -->
-				<div class="recent_tweets">
-					<h3><span>Recent Tweets</span></h3>
+				<div class="recent_posts">
+					<h3><span>团队动态</span></h3>
 					<ul>
-						<li><a href="#">@laurakalbag</a> I will be very soon. Ase result reco endation <a href="#">31 minutes ago</a></li>
-						<li><a href="#">@laurakalbag</a> you got chocolates!? That's i I'm signing up. <a href="#">37 minutes ago</a></li>
+						<li><a href="#"></a></li>
 					</ul>
 				</div>
 				<!-- /recent tweets -->
 				<!-- recent posts -->
 				<div class="recent_posts">
-					<h3><span>Recent Posts</span></h3>
+					<h3><span>最新项目</span></h3>
 					<ul>
-						<li><a href="#">Lorem ipsum dolo amet consecect</a></li>
-						<li><a href="#">Sed laoreet neque nonte mauris </a></li>
-						<li><a href="#">Metus lacus, porta vestibulum</a></li>
-						<li><a href="#">Morbi ac magna est ornare eliticits</a></li>
-						<li><a href="#">Voluptas sadips nemis un etras</a></li>
+						<li><a href="#"></a></li>
 					</ul>
 				</div>
 				<!-- /recent posts -->
 				<!-- subscribe block -->
-				<div class="subscribe_block">
-					<h3><span>Stay Connected</span></h3>
-					<form method="post" action="#">
-						<p><input type="text" id="name" value="NAME ..." /></p>
-						<p><input type="text" id="email" value="EMAIL ..." /></p>
-						<p><input type="submit" value="Subscribe" /></p>
-					</form>
+				<div class="recent_posts">
+					<h3><span>专业服务</span></h3>
+					<ul>
+						<li><a href="#">美国设立公司</a></li>
+						<li><a href="#">项目收购并购</a></li>
+						<li><a href="#">美国投资移民</a></li>
+						<li><a href="#">投融资业务</a></li>
+						<li><a href="#">常年法律顾问</a></li>
+						<li><a href="#">留学与教育</a></li>
+					</ul>
 				</div>
 				<!-- /subscribe block -->
 			</footer>

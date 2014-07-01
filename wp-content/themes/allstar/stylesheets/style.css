@@ -1208,7 +1208,7 @@ a.btn_s {height:26px;padding-top:10px;display:block;text-align:center;}
 .footer footer .recent_tweets ul li {margin-bottom:19px;padding-bottom:19px;border-bottom:1px solid #d1cfcf;}
 .footer footer .recent_tweets ul li:last-child {margin-bottom:0;padding-bottom:0;border-bottom:none;}
 	/* recent posts */
-.footer footer .recent_posts {float:left;width:212px;padding:0 36px;}
+.footer footer .recent_posts {float:left;width:212px;padding:0 0 0 26px;}
 .footer footer .recent_posts ul li {padding:0 0 7px 20px;position:relative;}
 .footer footer .recent_posts ul li:before {content:'';background:url(../images/sprite.png) 0 0 no-repeat;position:absolute;top:6px;left:0;display:block;width:5px;height:5px;}
 .footer footer .recent_posts ul li a, .footer footer .recent_posts ul li a:visited {color:#626363;}

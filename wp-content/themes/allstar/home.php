@@ -27,7 +27,7 @@ get_header();
 
 <div class="content_block">
 	<!-- text bar -->
-	<div class="text_bar">
+<!--	<div class="text_bar">
 		<div class="wraper">
 			<h2>Construct is a responsive, business HTML template!<span>Check out the numerous options and features that Construct includes.</span></h2>
 			<a class="buy btn_l" href="#">Buy Construct!</a>
@@ -36,7 +36,7 @@ get_header();
 				<p>This is a widgetized area, you can add icons,  shortcodes, etc  ...  <a href="#">read more</a></p>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!-- /text bar -->
 	<div class="wraper">
 		<!-- features_block -->
@@ -52,7 +52,7 @@ get_header();
 					<h4><span>提供方案</span></h4>
 					<p></p>
 				</li>
-				<li class="">
+				<li class="easy">
 					<a class="circle_link" href="#">&nbsp;</a>
 					<h4><span>签约</span></h4>
 					<p></p>
