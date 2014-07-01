@@ -10,36 +10,17 @@ get_header();
 	<div class="fallback"><img src="<?=get_template_directory_uri()?>/images/sliders/home_page_1/home_page_1_fallback.jpg" alt="" /></div>
 	<div id="obo_slider">  				
 		<div class="oneByOne_item">
-			<img src="<?=get_template_directory_uri()?>/images/sliders/home_page_1/home1_slide_1.png" class="wp1_3 slide1_bot" alt="">		            
-			<span class="txt1">Construct Looks Good On</span>			
-			<span class="txt2">ALL Screen Sizes</span>												
-			<span class="txt3 short">Lid est laborum dolo rumes fugats untras. Et harums ser quidem sit rerum facilis dolores nemis uns voluptas sadips ipsums vitae tolu ptas nemis omnis fugiats vitaes nemo minima rerums uns.</span>												
-			<span class="txt4 txt4up"><a href="#" class="btn_l">Purchase Now!</a></span>
+			<img src="<?=get_template_directory_uri()?>/images/sliders/home_page_1/global.png" class="wp1_3 slide1_bot" alt="">		            
+			<span class="txt1">专业律师协助</span>			
+			<span class="txt2">境外投资</span>												
+			<span class="txt3 short">协助客户进行目标国政策法规分析，对项目进行尽职调查、投资结构设计，帮助完成风控、付汇、登记、交割等专业事务。</span>												
 		</div>
 		<div class="oneByOne_item">                                 	
-			<img src="<?=get_template_directory_uri()?>/images/sliders/home_page_7/home7_slide_2.png" class="wp1_3 wp1_left slide2_bot" alt="">			            
-			<span class="txt1 blue txt_right2">This Slider Has Tons of Great Features</span>			
-			<span class="txt2 blue txt_right2">iOS Friendly</span>												
-			<span class="txt2 blue txt_right2">and Hyperlinks</span>												
-			<span class="txt4 txt_right2 txt4up"><a href="#" class="btn_l">Purchase Now!</a></span>												
+			<img src="<?=get_template_directory_uri()?>/images/sliders/home_page_1/team.png" class="wp1_3 wp1_left" alt="">			            
+			<span class="txt1 txt_right2">提供独一无二的海外专业服务</span>			
+			<span class="txt2 txt_right2">我们的团队</span>												
+			<span class="txt3 txt_right2">协助客户落实企业、家庭、个人在美国的后续事务</span>												
 		</div>	
-
-		<div class="oneByOne_item">
-			<img src="<?=get_template_directory_uri()?>/images/sliders/home_page_7/home7_slide_3.png" class="wp1_3 slide2_bot" alt="">		            
-			<span class="txt1">Crucio is a responsive, business</span>			
-			<span class="txt2">HTML template</span>												
-			<span class="txt3">Lid est laborum dolo rumes fugats untras. Et harums ser quidem sit rerum facilis dolores nemis uns voluptas sadips ipsums vitae tolu ptas nemis omnis fugiats vitaes nemo minima rerums uns.</span>												
-			<span class="txt4"><a href="#" class="btn_l">Purchase Now!</a></span>
-		</div>                                                                                              
-
-		<div class="oneByOne_item">                                 	
-			<img src="<?=get_template_directory_uri()?>/images/sliders/home_page_7/home7_slide_4.png" class="wp1_3 slide3_bot" alt="">			            
-			<span class="txt1 blue">Use Individual Elements or </span>			
-			<span class="txt2 blue">BIG IMAGES</span>												
-			<span class="txt3 short">Lid est laborum dolo rumes fugats untras. Et harums ser quidem sit rerum facilis dolores nemis uns volu taes nemo minima rerums uns.</span>												
-			<span class="txt4 txt4up"><a href="#" class="btn_l">Purchase Now!</a></span>
-		</div>
-
 	</div>    
 </div>
 <!-- /one bt one slider -->
@@ -61,30 +42,30 @@ get_header();
 		<!-- features_block -->
 		<div class="features_block">
 			<ul>
-				<li class="design">
-					<a class="circle_link" href="#">&nbsp;</a>
-					<h4><span>Design</span></h4>
-					<p>Lid est laborum dolo rumes fugats untras. Et harums ser quidem sit rerum facilis est dolores nemis uns.  </p>
-				</li>
-				<li class="flexible">
-					<a class="circle_link" href="#">&nbsp;</a>
-					<h4><span>Flexible</span></h4>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorem que laudantium totam</p>
-				</li>
 				<li class="support">
 					<a class="circle_link" href="#">&nbsp;</a>
-					<h4><span>Support</span></h4>
-					<p>Nemo enim ipsam voluptatem uns quia voluptas sit aspernatur aut odit aut fugit, sed quia consequunturs.</p>
-				</li>
-				<li class="easy">
-					<a class="circle_link" href="#">&nbsp;</a>
-					<h4><span>Easy To Edit</span></h4>
-					<p>Neque porro qusquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit sed quia nons.</p>
+					<h4><span>专业咨询</span></h4>
+					<p></p>
 				</li>
 				<li class="seo">
 					<a class="circle_link" href="#">&nbsp;</a>
-					<h4><span>SEO Ready</span></h4>
-					<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis voluptas uns sadips doloreusi.</p>
+					<h4><span>提供方案</span></h4>
+					<p></p>
+				</li>
+				<li class="">
+					<a class="circle_link" href="#">&nbsp;</a>
+					<h4><span>签约</span></h4>
+					<p></p>
+				</li>
+				<li class="design">
+					<a class="circle_link" href="#">&nbsp;</a>
+					<h4><span>协助执行</span></h4>
+					<p></p>
+				</li>
+				<li class="flexible">
+					<a class="circle_link" href="#">&nbsp;</a>
+					<h4><span>客户目标实现</span></h4>
+					<p></p>
 				</li>
 			</ul>
 		</div>
