@@ -1,13 +1,12 @@
-<?php get_header(); ?>
+<?php get_header(); the_post(); ?>
 <div class="content_block">
 	<!-- top_title -->
 	<div class="top_title">
 		<div class="wraper">
-			<h2>About Us<span>We think you'll love to work with us</span></h2>
+			<h2><?php the_title(); ?><span><?php the_excerpt(); ?></span></h2>
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Pages</a></li>
-				<li>About</li>
+				<li><a href=" <?=site_url()?>">首页</a></li>
+				<li>关于我们</li>
 			</ul>
 		</div>
 	</div>
@@ -15,71 +14,46 @@
 	<div class="wraper">
 		<!-- intro text -->
 		<div class="intro_text">
+			<?php $posts = get_posts(array('category_name'=>'团队概况')); ?>
 			<ul class="intro_slider">
+				<?php foreach($posts as $post){ ?>
 				<li>
-					<div class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/about_us/about_us_slide_1.png" width="426" height="238" alt="" /></div>
+					<div class="bwWrapper"><?=get_the_post_thumbnail($post->ID, 'about-us')?></div>
 					<div class="desc">
-						<h4>Welcome to Construct, a Responsive Business HTML template that has a ton of features. Let us tell you about it!</h4>
-						<p>Want to take a tour?  Check out the numerous options and features that Construct includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odios un  dig nissimos ducimus qui blan ditiis prasix esentium voluptatum deleniti atque si corrupti quos dolores et quas molestias excep turi int occaecati cupiditate non provident, simi lique sunt in culpa qui officia deserunt mol distinctio. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis prae includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odio dignissimos duc imus qui blan ditiis prasix eseent ntium voluptatum deleniti atques.</p>
+						<h4><?=get_the_title($post->ID)?></h4>
+						<?=wpautop($post->post_excerpt)?>
 					</div>
 				</li>
-				<li>
-					<div class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/about_us/about_us_slide_2.png" width="426" height="238" alt="" /></div>
-					<div class="desc">
-						<h4>Responsive Business HTML template that has a ton of features. Let us tell you about it!</h4>
-						<p>Check out the numerous options and features that Construct includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odios un  dig nissimos ducimus qui blan ditiis prasix esentium voluptatum deleniti atque si corrupti quos dolores et quas molestias excep turi int occaecati cupiditate non provident, simi lique sunt in culpa qui officia deserunt mol distinctio. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis prae includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odio dignissimos duc imus qui blan ditiis prasix eseent ntium voluptatum deleniti atques.</p>
-					</div>
-				</li>
-				<li>
-					<div class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/about_us/about_us_slide_3.png" width="426" height="238" alt="" /></div>
-					<div class="desc">
-						<h4>Welcome to Construct, a Responsive Business HTML template that has a ton of features. Let us tell you about it!</h4>
-						<p>Want to take a tour?  Check out the numerous options and features that Construct includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odios un  dig nissimos ducimus qui blan ditiis prasix esentium voluptatum deleniti atque si corrupti quos dolores et quas molestias excep turi int occaecati cupiditate non provident, simi lique sunt in culpa qui officia deserunt mol distinctio. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis prae includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odio dignissimos duc imus qui blan ditiis prasix eseent ntium voluptatum deleniti atques.</p>
-					</div>
-				</li>
-				<li>
-					<div class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/about_us/about_us_slide_4.png" width="426" height="238" alt="" /></div>
-					<div class="desc">
-						<h4>Responsive Business HTML template that has a ton of features. Let us tell you about it!</h4>
-						<p>Check out the numerous options and features that Construct includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odios un  dig nissimos ducimus qui blan ditiis prasix esentium voluptatum deleniti atque si corrupti quos dolores et quas molestias excep turi int occaecati cupiditate non provident, simi lique sunt in culpa qui officia deserunt mol distinctio. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis prae includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odio dignissimos duc imus qui blan ditiis prasix eseent ntium voluptatum deleniti atques.</p>
-					</div>
-				</li>
-				<li>
-					<div class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/about_us/about_us_slide_5.png" width="426" height="238" alt="" /></div>
-					<div class="desc">
-						<h4>Welcome to Construct, a Responsive Business HTML template that has a ton of features. Let us tell you about it!</h4>
-						<p>Want to take a tour?  Check out the numerous options and features that Construct includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odios un  dig nissimos ducimus qui blan ditiis prasix esentium voluptatum deleniti atque si corrupti quos dolores et quas molestias excep turi int occaecati cupiditate non provident, simi lique sunt in culpa qui officia deserunt mol distinctio. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis prae includes, we knoesir you’ll love them! At vero eos et accusamus et iusto odio dignissimos duc imus qui blan ditiis prasix eseent ntium voluptatum deleniti atques.</p>
-					</div>
-				</li>
+				<?php } ?>
 			</ul>
 		</div>
 		<!-- /intro text -->
 		<!-- process -->
 		<div class="process">
-			<h4>Our Process</h4>
+			<h4>服务流程</h4>
 			<ul>
 				<li>
-					<h3><span>Step 1</span> Resaearch</h3>
-					<p>Lid est laborum et dolorum fugaste. Etras harum quidem rerum facilis est etras expedita distinctio. Namsir uns libero uns tempo re, cum soluta nobis est eligendi optio cumque nihil impit qd amets untra dolor amet sadipet.</p>
+					<h3><span>Step 1</span> 专业咨询</h3>
+					<p></p>
 				</li>
 				<li>
-					<h3><span>Step 2</span> Design</h3>
-					<p>Lid est laborum et dolorum fugaste. Etras harum quidem rerum facilis est etras expedita distinctio. Namsir uns libero uns tempo re, cum soluta nobis est eligendi optio cumque nihil impit qd amets untra dolor amet sadipet.</p>
+					<h3><span>Step 2</span> 提供方案</h3>
+					<p></p>
 				</li>
 				<li>
-					<h3><span>Step 3</span> Develop</h3>
-					<p>Lid est laborum et dolorum fugaste. Etras harum quidem rerum facilis est etras expedita distinctio. Namsir uns libero uns tempo re, cum soluta nobis est eligendi optio cumque nihil impit qd amets untra dolor amet sadipet.</p>
+					<h3><span>Step 3</span> 签约</h3>
+					<p></p>
 				</li>
 				<li>
-					<h3><span>Step 4</span> Deliver</h3>
-					<p>Lid est laborum et dolorum fugaste. Etras harum quidem rerum facilis est etras expedita distinctio. Namsir uns libero uns tempo re, cum soluta nobis est eligendi optio cumque nihil impit qd amets untra dolor amet sadipet.</p>
+					<h3><span>Step 4</span> 协助执行</h3>
+					<p></p>
 				</li>
 			</ul>
 		</div>
 		<!-- /process --> 
-		<div class="why_choose_explore">
+<!--		<div class="why_choose_explore">
 			<h4>Why Choose Crucio?  We’ll Tell You!</h4>
-			<!-- why choose -->
+			 why choose 
 			<div class="why_choose">
 				<ul>
 					<li>Cras rutrum leo at odio volutpat id blandit fugiats ipsum ornare.</li>
@@ -91,8 +65,8 @@
 					<li>Donec pulvinar lectus quis felis laoreet vestibulum.</li>
 				</ul>
 			</div>
-			<!-- /why choose -->
-			<!-- features_explore -->
+			 /why choose 
+			 features_explore 
 			<div class="features_explore">
 				<ul>
 					<li>
@@ -105,28 +79,26 @@
 					</li>
 				</ul>
 			</div>
-			<!-- /features_explore -->
-		</div>
+			 /features_explore 
+		</div>-->
 		<!-- client list -->
 		<div class="featured_list client_list">
 			<div class="features_slider_wrap">
-				<h3>Our Most Successful Clients</h3>
+				<h3>我们的团队</h3>
+				<?php $team = get_posts(array('category_name'=>'专业人员'));?>
 				<ul class="features_slider">
-					<li><div><div class="bwWrapper"><a href="#"><img src="<?= get_template_directory_uri() ?>/images/client_logos/client_logo_1.png" alt="" /></a></div></div></li>
-					<li><div><div class="bwWrapper"><a href="#"><img src="<?= get_template_directory_uri() ?>/images/client_logos/client_logo_2.png" alt="" /></a></div></div></li>
-					<li><div><div class="bwWrapper"><a href="#"><img src="<?= get_template_directory_uri() ?>/images/client_logos/client_logo_3.png" alt="" /></a></div></div></li>
-					<li><div><div class="bwWrapper"><a href="#"><img src="<?= get_template_directory_uri() ?>/images/client_logos/client_logo_4.png" alt="" /></a></div></div></li>
-					<li><div><div class="bwWrapper"><a href="#"><img src="<?= get_template_directory_uri() ?>/images/client_logos/client_logo_5.png" alt="" /></a></div></div></li>
-					<li><div><div class="bwWrapper"><a href="#"><img src="<?= get_template_directory_uri() ?>/images/client_logos/client_logo_6.png" alt="" /></a></div></div></li>
+					<?php foreach($team as $person){ ?>
+					<li><div><div class="bwWrapper"><a href="<?=get_the_permalink($person->ID)?>"><?=get_the_post_thumbnail($person->ID, 'about-us-team')?></a></div></div></li>
+					<?php } ?>
 				</ul>
 			</div>
 		</div>
 		<!-- /client list -->
 		<!-- /send_quote -->
-		<div class="send_quote">
+<!--		<div class="send_quote">
 			<h4>Would you like us to send you a quote?</h4>
 			<p>Click the button, fill out the form and we'll be right with you!<a class="btn_col" href="#">Get A Quote</a></p>
-		</div>
+		</div>-->
 		<!-- /send_quote -->
 
 	</div>
