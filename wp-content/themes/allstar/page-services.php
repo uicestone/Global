@@ -1,5 +1,4 @@
 <?php
-$posts = get_posts(array('category_name'=>'服务内容', 'order'=>'asc', 'posts_per_page'=>-1));
 get_header(); the_post(); ?>
 <div class="content_block">
 	<!-- top_title -->
@@ -17,17 +16,18 @@ get_header(); the_post(); ?>
 		<!-- services option -->
 		<div class="features2_block services_option">
 			<div id="h_tabs" class="c_after">
+				<?php $posts = get_posts(array('category_name'=>'服务内容', 'order'=>'asc', 'posts_per_page'=>-1)); ?>
 				<ul class="tab_select left_list">
 					<?php foreach($posts as $post){ ?>
 					<li class="support">
-						<a class="tlink" href="#<?=$post->post_name?>">&nbsp;</a>
+						<a class="tlink" href="#service-<?=$post->ID?>">&nbsp;</a>
 						<h4><?=$post->post_title?></h4>
 						<p><span><?=$post->post_excerpt?></span></p>
 					</li>
 					<?php } ?>
 				</ul>
 				<?php foreach($posts as $post){ ?>
-				<div id="<?=$post->post_name?>" class="right_desc">
+				<div id="service-<?=$post->ID?>" class="right_desc">
 					<?=wpautop($post->post_content)?>
 				</div>
 				<?php } ?>

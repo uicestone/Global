@@ -14,7 +14,7 @@
 				<div class="recent_posts">
 					<h3><span>团队动态</span></h3>
 					<ul>
-						<?php foreach(get_posts(array('category_name'=>'团队动态')) as $news){ ?>
+						<?php foreach(get_posts(array('tag'=>'团队动态')) as $news){ ?>
 						<li><a href="<?=get_the_permalink($news->ID)?>"><?=get_the_title($news->ID)?></a></li>
 						<?php } ?>
 					</ul>
@@ -22,7 +22,7 @@
 				<div class="recent_posts">
 					<h3><span>近期项目</span></h3>
 					<ul>
-						<?php foreach(get_posts(array('category_name'=>'近期项目')) as $news){ ?>
+						<?php foreach(get_posts(array('tag'=>'近期项目')) as $news){ ?>
 						<li><a href="<?=get_the_permalink($news->ID)?>"><?=get_the_title($news->ID)?></a></li>
 						<?php } ?>
 					</ul>

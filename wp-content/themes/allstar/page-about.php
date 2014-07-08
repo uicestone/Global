@@ -18,9 +18,9 @@
 			<ul class="intro_slider">
 				<?php foreach($posts as $post){ ?>
 				<li>
-					<div class="bwWrapper"><?=get_the_post_thumbnail($post->ID, 'about-us')?></div>
+					<div class="bwWrapper"><a href="<?=get_the_permalink($post->ID)?>"><?=get_the_post_thumbnail($post->ID, 'about-us')?></a></div>
 					<div class="desc">
-						<h4><?=get_the_title($post->ID)?></h4>
+						<h4><a href="<?=get_the_permalink($post->ID)?>"><?=get_the_title($post->ID)?></a></h4>
 						<?=wpautop($post->post_excerpt)?>
 					</div>
 				</li>

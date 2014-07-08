@@ -39,7 +39,7 @@
 			<div class="recent_work">
 				<h4>近期项目</h4>
 				<ul class="recent_slider">
-					<?php foreach(get_posts(array('category_name'=>'faq')) as $post){ ?>
+					<?php foreach(get_posts(array('tag'=>'近期项目')) as $post){ ?>
 					<li>
 						<div class="bwWrapper">
 							<a href="<?=get_the_permalink($post->ID)?>"><?=get_the_post_thumbnail($post->ID, 'contact-news')?></a>

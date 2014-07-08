@@ -25,14 +25,14 @@ jQuery(function($) {
 		$(currentTab).show();
 		return false;
 	});
-	$('#h_tabs div').hide();
-	$('#h_tabs div:first').show();
+	$('#h_tabs>div').hide();
+	$('#h_tabs>div:first').show();
 	$('#h_tabs ul li:first').addClass('active');
 	$('#h_tabs ul li a').click(function(){
 		$('#h_tabs ul li').removeClass('active');
 		$(this).parent().addClass('active');
 		var currentTab2 = $(this).attr('href');
-		$('#h_tabs div').hide();
+		$('#h_tabs>div').hide();
 		$(currentTab2).show();
 		return false;
 	});
