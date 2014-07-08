@@ -9,11 +9,9 @@
 		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
 		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 		<?php wp_head(); ?>
-		<!--[if lt IE 9]>
-		<script src="scripts/ie9.js">IE7_PNG_SUFFIX=".png";</script>
-		<![endif]-->
 	</head>
 	<body>
+		<?php do_action('icl_language_selector'); ?>
 		<div class="wraper">
 			<header class="header">
 				<a class="logo" href="<?php echo site_url(); ?>">Allstar International</a>

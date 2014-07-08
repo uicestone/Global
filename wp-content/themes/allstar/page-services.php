@@ -1,4 +1,6 @@
-<?php get_header(); the_post(); ?>
+<?php
+$posts = get_posts(array('category_name'=>'服务内容', 'order'=>'asc', 'posts_per_page'=>-1));
+get_header(); the_post(); ?>
 <div class="content_block">
 	<!-- top_title -->
 	<div class="top_title">
@@ -16,143 +18,19 @@
 		<div class="features2_block services_option">
 			<div id="h_tabs" class="c_after">
 				<ul class="tab_select left_list">
-					<li class="design">
-						<a class="tlink" href="#htab-1">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>Great Design</h4>
-						<p><span>Subhead Goes HEre</span></p>
-					</li>
-					<li class="flexible">
-						<a class="tlink" href="#htab-2">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>Very Flexible</h4>
-						<p><span>Subhead Goes HEre</span></p>
-					</li>
-					<li class="fonts">
-						<a class="tlink" href="#htab-3">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>500+ Fonts</h4>
-						<p><span>Subhead Goes HEre</span></p>
-					</li>
-					<li class="ultra">
-						<a class="tlink" href="#htab-4">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>Ultra Responsive</h4>
-						<p><span>Subhead Goes HEre</span></p>
-					</li>
+					<?php foreach($posts as $post){ ?>
 					<li class="support">
-						<a class="tlink" href="#htab-5">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>Superb Support</h4>
-						<p><span>Subhead Goes HEre</span></p>
+						<a class="tlink" href="#<?=$post->post_name?>">&nbsp;</a>
+						<h4><?=$post->post_title?></h4>
+						<p><span><?=$post->post_excerpt?></span></p>
 					</li>
-					<li class="easy">
-						<a class="tlink" href="#htab-6">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>Easy To Customize</h4>
-						<p><span>Subhead Goes HEre</span></p>
-					</li>
-					<li class="color">
-						<a class="tlink" href="#htab-7">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>Choose Your Color</h4>
-						<p><span>Subhead Goes HEre</span></p>
-					</li>
-					<li class="updates">
-						<a class="tlink" href="#htab-8">&nbsp;</a>
-						<a class="circle_link">&nbsp;</a>
-						<h4>Constant Updates</h4>
-						<p><span>Subhead Goes HEre</span></p>
-					</li>
+					<?php } ?>
 				</ul>
-				<div id="htab-1" class="right_desc">
-					<p><em><strong>Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_8.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
+				<?php foreach($posts as $post){ ?>
+				<div id="<?=$post->post_name?>" class="right_desc">
+					<?=wpautop($post->post_content)?>
 				</div>
-				<div id="htab-2" class="right_desc">
-					<p><em><strong>Very Flexible Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_9.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
-				</div>
-				<div id="htab-3" class="right_desc">
-					<p><em><strong>500+ Fonts Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_10.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
-				</div>
-				<div id="htab-4" class="right_desc">
-					<p><em><strong>Ultra Responsive Very Flexible Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_11.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
-				</div>
-				<div id="htab-5" class="right_desc">
-					<p><em><strong>Superb Support Very Flexible Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_12.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
-				</div>
-				<div id="htab-6" class="right_desc">
-					<p><em><strong>Easy To Customize Very Flexible Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_13.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
-				</div>
-				<div id="htab-7" class="right_desc">
-					<p><em><strong>Choose Your Color Very Flexible Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_14.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
-				</div>
-				<div id="htab-8" class="right_desc">
-					<p><em><strong>Constant Updates Very Flexible Lid est laborum dolores rumes fugats untras. Etras sit harums sertes quidem sit sadips atemsi accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. sadips uns.</strong></em></p>
-					<p>Ciatis unde omnis iste natus error sit voluptatese accusantium doloremque sitsers lauda ntium sit totam rem aperiam, eaque ipsa quae ab illo inventoreres veritatis etras quasi set architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volupt atemas voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni </p>
-					<p class="bwWrapper"><img src="<?= get_template_directory_uri() ?>/images/services_process/services_15.png" width="202" height="120" alt="" /></p>
-					<ul>
-						<li>Cras rutrum leo at odio volutpat ids.</li>
-						<li>Donec fermentum porttitor nuncs.</li>
-						<li>Maecenas quis nisi in tortor luctus.</li>
-						<li>Aenean faucibus sapien odio varius. </li>
-					</ul>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

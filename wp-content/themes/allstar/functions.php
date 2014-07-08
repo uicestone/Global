@@ -5,12 +5,14 @@
 add_action('init', function(){
 	
 	register_nav_menu('primary', '主导航');
+	register_nav_menu('footer-contact', '页脚联系方式');
 	
 	add_image_size('post-thumbnail', 493, 249, true);
 	add_image_size('about-us', 426, 238, true);
 	add_image_size('about-us-team', 161, 100, true);
 	add_image_size('team', 279, 141, true);
 	add_image_size('contact-news', 60, 55, true);
+	add_image_size('single-top', 640, 265, true);
 	
 	wp_register_style('style', get_template_directory_uri() . '/stylesheets/style.css');
 	wp_register_style('responsive', get_template_directory_uri() . '/stylesheets/responsive.css');
