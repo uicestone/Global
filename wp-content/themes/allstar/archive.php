@@ -86,12 +86,6 @@ jQuery(function($){
       $('#faq').dltoggle_hide();
       return false;
 	});
-    $('.bwWrapper').BlackAndWhite({
-        hoverEffect : true,
-        webworkerPath : false,
-        responsive:true,
-        invertHoverEffect:false
-    });
 })
 </script>
 <?php get_footer(); ?>

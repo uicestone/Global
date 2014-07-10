@@ -62,12 +62,6 @@ jQuery(function($){
 		moveSlideQty: 1,
     	speed : 1000
 	});
-    $('.bwWrapper').BlackAndWhite({
-        hoverEffect : true,
-        webworkerPath : false,
-        responsive:true,
-        invertHoverEffect:false
-    });
 })
 </script>
 <?php get_footer(); ?>

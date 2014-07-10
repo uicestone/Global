@@ -7,11 +7,7 @@
 	
 	<div class="footer">
 			<footer>
-				<div class="bottom_about">
-					<p><img src="<?=get_template_directory_uri()?>/images/logo.png" alt="" /></p>
-					<p></p>
-				</div>
-				<div class="recent_posts">
+				<div class="recent_posts" style="width:458px">
 					<h3><span>团队动态</span></h3>
 					<ul>
 						<?php foreach(get_posts(array('tag'=>'团队动态')) as $news){ ?>

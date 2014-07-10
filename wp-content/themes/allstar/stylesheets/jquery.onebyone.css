@@ -20,7 +20,7 @@
 }         
                       
 #obo_slider .oneByOne_item span{
-font:13px 'PT Sans', Arial, Tahoma, Verdana, Sans-Serif;color:#393939;
+	font:13px STHeiti, 'Microsoft Yahei', Helvetica, Arial, Tahoma, Verdana, Sans-Serif; color:#393939;
 }                                                                                        
 
 #obo_slider .oneByOne_item a{
@@ -99,6 +99,7 @@ font:13px 'PT Sans', Arial, Tahoma, Verdana, Sans-Serif;color:#393939;
 	text-shadow:#fff 0 1px 1px, #bfbfbf 0 2px 2px;
 	color: #5eafcd;  
 	font-weight:bold;
+	font-family: STHeiti, SimHei, 'Microsoft Yahei', Helvetica, Arial, sans-serif;
 	font-size: 46px;
 }                   
     

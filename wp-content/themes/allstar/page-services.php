@@ -35,14 +35,4 @@ get_header(); the_post(); ?>
 		</div>
 	</div>
 </div>
-<script>
-jQuery(function($){
-    $('.bwWrapper').BlackAndWhite({
-        hoverEffect : true,
-        webworkerPath : false,
-        responsive:true,
-        invertHoverEffect:false
-    });
-});
-</script>
 <?php get_footer(); ?>

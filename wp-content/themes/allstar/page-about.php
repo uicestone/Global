@@ -81,12 +81,6 @@ jQuery(function($) {
 		mode: 'fade',
 		pager: true
 	});
-	$('.bwWrapper').BlackAndWhite({
-		hoverEffect: true,
-		webworkerPath: false,
-		responsive: true,
-		invertHoverEffect: false
-	});
 });
 </script>
 

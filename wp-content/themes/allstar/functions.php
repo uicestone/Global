@@ -36,6 +36,5 @@ add_action('wp_enqueue_scripts', function(){
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('functions');
 	wp_enqueue_script('jquery.bxSlider');
-	wp_enqueue_script('jquery.blackandwhite');
 	wp_enqueue_script('jquery.faq');
 });

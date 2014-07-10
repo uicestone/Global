@@ -20,14 +20,8 @@
 <script src="scripts/jquery.blackandwhite.min.js"></script>
 <script src="scripts/js_func.js"></script>
 <script>
-$(function(){
+jQuery(function($){
 	$(".gallery a[rel^='prettyPhoto']").prettyPhoto({theme: 'dark_rounded'});
-    $('.bwWrapper').BlackAndWhite({
-        hoverEffect : true,
-        webworkerPath : false,
-        responsive:true,
-        invertHoverEffect:false
-    });
 })
 </script>
 </head>

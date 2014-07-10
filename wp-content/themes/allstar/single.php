@@ -21,17 +21,6 @@
 				</div>
 			</div>
 
-			<div class="leave_comment">
-				<h4>评论</h4>
-				<form action="#" method="post">
-					<p><label for="namet">Name</label>(required)<br /><input id="namet" type="text" /></p>
-					<p><label for="mailt">E-mail</label>(required)<br /><input id="mailt" type="text" /></p>
-					<p><label for="website">Website</label><br /><input id="website" type="text" /></p>
-					<p><label for="message">Message</label>(required)<br /><textarea id="message"></textarea></p>
-					<p><input class="btn_m" type="submit" value="提交" /></p>
-				</form>
-			</div>
-
 		</div>
 		
 		<div class="sidebar">
@@ -57,9 +46,9 @@
 						<div class="bwWrapper"><a href="<?=get_the_permalink($post->ID)?>"><?=get_the_post_thumbnail($post->ID, 'contact-news')?></a></div>
 						<div class="desc">
 							<p><strong><a href="<?=get_the_permalink($post->ID)?>"><?=get_the_title($post->ID)?></a></strong></p>
-							<p><?=$post->post_excerpt?></p>
-							<p><span><?=get_the_date($post->ID)?></span></p>
+							<p><span><?=get_the_date('', $post->ID)?></span></p>
 						</div>
+						<p><?=$post->post_excerpt?></p>
 					</li>
 					<?php } ?>
 					
@@ -159,12 +148,6 @@ jQuery(function($) {
 	$("#close").click(function(event) {
 		$('#faq').dltoggle_hide();
 		return false;
-	});
-	$('.bwWrapper').BlackAndWhite({
-		hoverEffect: true,
-		webworkerPath: false,
-		responsive: true,
-		invertHoverEffect: false
 	});
 })
 </script>
