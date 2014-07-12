@@ -18,7 +18,8 @@ p {margin-bottom:10px;}
 
 /* header */ 
 .header {position:relative;min-height:108px;z-index:1001;}
-.header .logo, .header .logo:visited {text-indent:-999em;cursor:pointer;background:url(../images/logo.png) no-repeat;display:block;width:300px;height:109px;position:absolute;top:0;left:-100px;}
+.header .logo, .header .logo:visited {text-indent:-999em;cursor:pointer;display:block;width:300px;height:109px;position:absolute;top:0;left:-100px;}
+.header .logo img {width:100%;position:absolute;}
 	/* top menu */
 .header nav {position:absolute;top:48px;right:0;}
 .header nav ul {zoom:1;}

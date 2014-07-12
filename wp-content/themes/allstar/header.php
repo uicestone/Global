@@ -14,7 +14,7 @@
 		<?php do_action('icl_language_selector'); ?>
 		<div class="wraper">
 			<header class="header">
-				<a class="logo" href="<?php echo site_url(); ?>">Allstar International</a>
+				<a class="logo" href="<?php echo site_url(); ?>"><img src="<?=get_template_directory_uri()?>/images/logo.png"></a>
 				<?php wp_nav_menu(array('theme_location'=>'primary', 'container'=>'nav'))?>
 			</header>
 		</div> 
