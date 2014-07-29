@@ -19,6 +19,7 @@
 
 <body <?php body_class(); ?>>
 	<header class="shadow">
+		<div class="contact-info">总机：86-21-51096488</div>
 		<section>
 			<h1 class="title">
 				<a href="<?bloginfo('url')?>"><img src="/wp-content/uploads/logo.png" alt="星瀚国际中心" /></a>

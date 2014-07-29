@@ -55,6 +55,13 @@ header{
 	padding-bottom:18px;
 }
 
+header .contact-info {
+	position: absolute;
+    right: 5%;
+    top: 30px;
+    color: #FFF;
+}
+
 .title{
 	width:239px;
 	margin-right:30px;
