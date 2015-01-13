@@ -25,7 +25,7 @@
 		
 		<div class="sidebar">
 			
-			<div class="recent_work">
+<!--			<div class="recent_work">
 				<h4>近期项目</h4>
 				<ul class="recent_slider">
 					<?php foreach(get_posts(array('tag'=>'近期项目')) as $post){ ?>
@@ -53,7 +53,7 @@
 					<?php } ?>
 					
 				</ul>
-			</div>
+			</div>-->
 			
 			<div class="acc_tabs">
 				<div id="tabs">
@@ -108,7 +108,7 @@
 				</ul>   
 			</div>-->
 			
-			<div class="flyout_area">
+<!--			<div class="flyout_area">
 				<dl id="faq">
 					<?php foreach(get_posts(array('category_name'=>'faq')) as $post){ ?>
 					<dt><h4><?=get_the_title($post->ID)?></h4></dt>
@@ -119,7 +119,7 @@
 					</dd>
 					<?php } ?>
 				</dl>
-			</div>
+			</div>-->
 			
 		</div>
 		
