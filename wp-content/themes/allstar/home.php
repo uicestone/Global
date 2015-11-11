@@ -26,7 +26,8 @@ jQuery(function($){
 	$('#obo_slider').oneByOne({
 		className: 'oneByOne1',
 		easeType: 'random',
-		slideShow: true
+		slideShow: true,
+		slideShowDelay: 5000
 	});
 });
 </script>
